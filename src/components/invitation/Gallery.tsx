@@ -8,7 +8,7 @@ const hands = "https://media.invitestory.in/ever-after-bloom/src/assets/scene-ha
 const couple = "https://media.invitestory.in/ever-after-bloom/src/assets/couple-lanterns.png";
 import { Ornament, Reveal, SectionTitle } from "./Reveal";
 
-const coupleIllustration = "/couple-illustration.png";
+const coupleIllustration = "/couple-bengali.png";
 const coupleReal = "/couple-real.jpg";
 const bananaLeafBg = "/banana-leaf-bg.png";
 

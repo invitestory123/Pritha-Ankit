@@ -5,7 +5,7 @@ import { Petals } from "./Petals";
 import { invitation } from "@/content/invitation";
 
 const bananaLeafBg = "/banana-leaf-bg.png";
-const coupleIllustration = "/couple-illustration.png";
+const coupleIllustration = "/couple-bengali.png";
 
 /** Chapter one: tropical banana leaf garden at dawn. */
 export function Hero() {
