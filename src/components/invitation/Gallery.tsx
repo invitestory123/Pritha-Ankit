@@ -8,14 +8,15 @@ const hands = "https://media.invitestory.in/ever-after-bloom/src/assets/scene-ha
 const couple = "https://media.invitestory.in/ever-after-bloom/src/assets/couple-lanterns.png";
 import { Ornament, Reveal, SectionTitle } from "./Reveal";
 
-const coupleWatercolor = "/couple-watercolor.png";
+const coupleIllustration = "/couple-illustration.png";
 const coupleReal = "/couple-real.jpg";
+const bananaLeafBg = "/banana-leaf-bg.png";
 
 const plates = [
-  { src: coupleWatercolor, alt: "Pritha & Ankit in wedding watercolor portrait", span: "sm:row-span-2", ratio: "aspect-[4/5]" },
-  { src: coupleReal, alt: "Pritha & Ankit smiling together under the trees", span: "", ratio: "aspect-square" },
+  { src: coupleIllustration, alt: "Pritha & Ankit illustrated wedding portrait", span: "sm:row-span-2", ratio: "aspect-[4/5]" },
+  { src: coupleReal, alt: "Pritha & Ankit smiling together", span: "", ratio: "aspect-square" },
   { src: dancing, alt: "Dancing under strings of warm lights", span: "", ratio: "aspect-square" },
-  { src: balcony, alt: "The couple on a marble balcony at golden hour", span: "sm:col-span-2", ratio: "aspect-[16/10]" },
+  { src: balcony, alt: "The couple at golden hour", span: "sm:col-span-2", ratio: "aspect-[16/10]" },
 ];
 
 export function Gallery() {
@@ -30,6 +31,16 @@ export function Gallery() {
         style={{
           background:
             "linear-gradient(180deg, var(--ivory) 0%, color-mix(in oklab, var(--blush) 22%, var(--ivory)) 60%, var(--ivory) 100%)",
+        }}
+      />
+      {/* Subtle banana leaf background */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10 opacity-5"
+        style={{
+          backgroundImage: `url('${bananaLeafBg}')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       />
       <div className="mx-auto max-w-4xl">

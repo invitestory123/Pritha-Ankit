@@ -1,10 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { IntroGate } from "@/components/invitation/IntroGate";
 import { Hero } from "@/components/invitation/Hero";
-
 import { CoupleStory } from "@/components/invitation/CoupleStory";
 import { Countdown } from "@/components/invitation/Countdown";
-import { Details } from "@/components/invitation/Details";
+import { Events } from "@/components/invitation/Events";
 import { Timeline } from "@/components/invitation/Timeline";
 import { Gallery } from "@/components/invitation/Gallery";
 import { Footer } from "@/components/invitation/Footer";
@@ -12,7 +11,7 @@ import { MusicPlayer } from "@/components/invitation/MusicPlayer";
 import { invitation } from "@/content/invitation";
 
 const title = `${invitation.couple.bride} & ${invitation.couple.groom} — An Illustrated Wedding Invitation`;
-const description = `Join ${invitation.couple.bride} and ${invitation.couple.groom} on ${invitation.dateLabel} at ${invitation.venue.name}. A hand-painted, animated wedding storybook.`;
+const description = `Join ${invitation.couple.bride} and ${invitation.couple.groom} for their Haldi, Sangeet & Wedding celebrations in December 2025.`;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -36,11 +35,10 @@ function Index() {
       <Hero />
       <CoupleStory />
       <Countdown />
-      <Details />
+      <Events />
       <Timeline />
       <Gallery />
       <Footer />
     </main>
   );
 }
-

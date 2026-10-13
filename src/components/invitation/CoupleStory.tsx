@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 const bride = "/portrait-bride.png";
 const groom = "/portrait-groom.png";
+const bananaLeafBg = "/banana-leaf-bg.png";
 import { invitation } from "@/content/invitation";
 import { Ornament, Reveal, SectionTitle } from "./Reveal";
 
@@ -71,6 +72,16 @@ export function CoupleStory() {
         style={{
           background:
             "linear-gradient(180deg, var(--ivory) 0%, color-mix(in oklab, var(--blush) 26%, var(--ivory)) 50%, var(--ivory) 100%)",
+        }}
+      />
+      {/* Subtle banana leaf background */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10 opacity-8"
+        style={{
+          backgroundImage: `url('${bananaLeafBg}')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       />
       <div className="mx-auto max-w-5xl">

@@ -1,12 +1,13 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { ChevronDown } from "lucide-react";
-const heroPalace = "https://media.invitestory.in/ever-after-bloom/src/assets/hero-palace.jpg";
-const bougainvillea = "https://media.invitestory.in/ever-after-bloom/src/assets/bougainvillea.png";
 import { LanternField } from "./LanternField";
 import { Petals } from "./Petals";
 import { invitation } from "@/content/invitation";
 
-/** Chapter one: the palace at dawn, with the sky as the stage. */
+const bananaLeafBg = "/banana-leaf-bg.png";
+const coupleIllustration = "/couple-illustration.png";
+
+/** Chapter one: tropical banana leaf garden at dawn. */
 export function Hero() {
   const reduced = useReducedMotion();
   const { scrollY } = useScroll();
@@ -16,25 +17,37 @@ export function Hero() {
   const fade = useTransform(scrollY, [0, 520], [1, 0]);
 
   return (
-    <section className="relative h-[100svh] min-h-[620px] w-full overflow-hidden">
-      {/* Painted sky + palace plate */}
-      <motion.div className="absolute inset-0" style={{ y: skyY, scale: 1.08 }}>
+    <section className="relative h-[100svh] min-h-[640px] w-full overflow-hidden">
+      {/* Warm cream base */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: "linear-gradient(180deg, oklch(0.97 0.025 85) 0%, oklch(0.985 0.015 90) 60%, oklch(0.975 0.02 75) 100%)",
+        }}
+      />
+
+      {/* Banana leaf background — full cover with parallax */}
+      <motion.div
+        className="absolute inset-0"
+        style={{ y: skyY }}
+      >
         <img
-          src={heroPalace}
-          alt="Watercolour illustration of a sandstone palace beneath a blush dawn sky"
-          width={1024}
-          height={1536}
-          className="h-full w-full object-cover object-bottom"
+          src={bananaLeafBg}
+          alt=""
+          aria-hidden
+          width={1200}
+          height={1600}
+          className="h-full w-full object-cover object-center opacity-90"
         />
       </motion.div>
 
-      {/* Soft haze so type always reads */}
+      {/* Soft cream vignette so type reads well */}
       <div
         aria-hidden
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(180deg, color-mix(in oklab, var(--lavender) 22%, transparent) 0%, transparent 34%, color-mix(in oklab, var(--cream) 18%, transparent) 78%, color-mix(in oklab, var(--ivory) 62%, transparent) 100%)",
+            "radial-gradient(ellipse 80% 60% at 50% 40%, color-mix(in oklab, var(--ivory) 55%, transparent) 0%, transparent 100%), linear-gradient(180deg, color-mix(in oklab, var(--cream) 40%, transparent) 0%, transparent 30%, color-mix(in oklab, var(--cream) 65%, transparent) 75%, var(--ivory) 100%)",
         }}
       />
 
@@ -51,7 +64,7 @@ export function Hero() {
             style={{
               top: `${12 + i * 16}%`,
               left: "-30%",
-              background: `color-mix(in oklab, var(--ivory) ${34 - i * 10}%, transparent)`,
+              background: `color-mix(in oklab, var(--ivory) ${28 - i * 8}%, transparent)`,
             }}
             animate={{ x: ["-8%", "18%", "-8%"] }}
             transition={{ duration: 52 + i * 22, repeat: Infinity, ease: "easeInOut" }}
@@ -86,33 +99,9 @@ export function Hero() {
           </motion.svg>
         ))}
 
-      {/* Corner botanicals */}
-      <motion.img
-        src={bougainvillea}
-        alt=""
-        aria-hidden
-        width={957}
-        height={715}
-        className="pointer-events-none absolute -top-6 -left-16 w-52 opacity-90 sm:w-72 md:w-80"
-        style={{ y: plateY }}
-        animate={reduced ? {} : { rotate: [0, 1.6, -1, 0] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.img
-        src={bougainvillea}
-        alt=""
-        aria-hidden
-        width={957}
-        height={715}
-        className="pointer-events-none absolute -right-20 bottom-24 w-48 scale-x-[-1] opacity-85 sm:w-64 md:w-72"
-        style={{ y: plateY }}
-        animate={reduced ? {} : { rotate: [0, -1.4, 1, 0] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-      />
-
-      {/* Typography in the sky's negative space */}
+      {/* Typography */}
       <motion.div
-        className="relative z-10 flex h-full flex-col items-center px-6 pt-[13svh] text-center"
+        className="relative z-10 flex h-full flex-col items-center px-6 pt-[10svh] text-center"
         style={{ y: titleY, opacity: fade }}
       >
         <motion.p
@@ -128,7 +117,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 22, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 1.5, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-6 text-5xl leading-[0.95] text-primary drop-shadow-[0_2px_18px_rgba(255,255,255,0.55)] sm:text-6xl md:text-7xl"
+          className="mt-5 text-5xl leading-[0.95] text-primary drop-shadow-[0_2px_18px_rgba(255,255,255,0.65)] sm:text-6xl md:text-7xl"
         >
           {invitation.couple.bride}
           <span className="mx-3 font-script text-3xl italic sm:text-4xl">&amp;</span>
@@ -140,7 +129,7 @@ export function Hero() {
           initial={{ opacity: 0, scaleX: 0.4 }}
           animate={{ opacity: 1, scaleX: 1 }}
           transition={{ duration: 1.2, delay: 0.9 }}
-          className="mt-6 h-px w-40 origin-center"
+          className="mt-5 h-px w-40 origin-center"
           style={{ background: "var(--gradient-gold)" }}
         />
 
@@ -148,25 +137,44 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, delay: 1.05 }}
-          className="mt-5 font-script text-xl text-primary/80 italic sm:text-2xl"
+          className="mt-4 font-script text-xl text-primary/80 italic sm:text-2xl"
         >
           {invitation.hero.blessing}
         </motion.p>
 
         <motion.a
-          href="#details"
+          href="#events"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.3 }}
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.97 }}
-          className="glass-plate shimmer mt-9 rounded-full px-8 py-3 font-sans text-[0.7rem] tracking-[0.32em] uppercase"
+          className="glass-plate shimmer mt-7 rounded-full px-8 py-3 font-sans text-[0.7rem] tracking-[0.32em] uppercase"
         >
           <span className="gold-text shimmer font-semibold">{invitation.hero.eyebrow}</span>
         </motion.a>
 
+        {/* Couple illustration — animated watercolor with real-face style */}
         <motion.div
-          className="mt-auto mb-8 text-primary/50"
+          className="relative mt-auto w-full max-w-xs sm:max-w-sm"
+          style={{ y: plateY }}
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.4, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <motion.img
+            src={coupleIllustration}
+            alt="Illustrated portrait of Pritha and Ankit in traditional Bengali wedding attire"
+            width={600}
+            height={700}
+            className="w-full object-contain drop-shadow-[0_8px_32px_rgba(0,0,0,0.18)]"
+            animate={reduced ? {} : { y: [0, -6, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </motion.div>
+
+        <motion.div
+          className="mb-6 text-primary/50"
           animate={reduced ? {} : { y: [0, 8, 0] }}
           transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
         >
