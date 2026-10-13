@@ -4,55 +4,52 @@ import { LanternField } from "./LanternField";
 import { Petals } from "./Petals";
 import { invitation } from "@/content/invitation";
 
-const bananaLeafBg = "/banana-leaf-bg.png";
-const coupleIllustration = "/couple-bengali.png";
+const heroBg = "/hero-bg-tropical.png";
+const coupleReal = "/couple-real.jpg";
 
-/** Chapter one: tropical banana leaf garden at dawn. */
+/** Chapter one: tropical garden with real couple photo — exact faces guaranteed. */
 export function Hero() {
   const reduced = useReducedMotion();
   const { scrollY } = useScroll();
-  const skyY = useTransform(scrollY, [0, 900], [0, reduced ? 0 : 170]);
-  const plateY = useTransform(scrollY, [0, 900], [0, reduced ? 0 : 70]);
-  const titleY = useTransform(scrollY, [0, 600], [0, reduced ? 0 : -60]);
+  const bgY = useTransform(scrollY, [0, 900], [0, reduced ? 0 : 140]);
+  const titleY = useTransform(scrollY, [0, 600], [0, reduced ? 0 : -50]);
   const fade = useTransform(scrollY, [0, 520], [1, 0]);
 
   return (
-    <section className="relative h-[100svh] min-h-[640px] w-full overflow-hidden">
+    <section className="relative h-[100svh] min-h-[680px] w-full overflow-hidden">
       {/* Warm cream base */}
       <div
         className="absolute inset-0"
         style={{
-          background: "linear-gradient(180deg, oklch(0.97 0.025 85) 0%, oklch(0.985 0.015 90) 60%, oklch(0.975 0.02 75) 100%)",
+          background:
+            "linear-gradient(180deg, oklch(0.975 0.022 88) 0%, oklch(0.988 0.012 92) 100%)",
         }}
       />
 
-      {/* Banana leaf background — full cover with parallax */}
-      <motion.div
-        className="absolute inset-0"
-        style={{ y: skyY }}
-      >
+      {/* Tropical illustrated background with parallax */}
+      <motion.div className="absolute inset-0" style={{ y: bgY, scale: 1.06 }}>
         <img
-          src={bananaLeafBg}
+          src={heroBg}
           alt=""
           aria-hidden
-          width={1200}
-          height={1600}
-          className="h-full w-full object-cover object-center opacity-90"
+          width={1080}
+          height={1920}
+          className="h-full w-full object-cover object-top"
         />
       </motion.div>
 
-      {/* Soft cream vignette so type reads well */}
+      {/* Centre vignette so text reads clearly */}
       <div
         aria-hidden
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 80% 60% at 50% 40%, color-mix(in oklab, var(--ivory) 55%, transparent) 0%, transparent 100%), linear-gradient(180deg, color-mix(in oklab, var(--cream) 40%, transparent) 0%, transparent 30%, color-mix(in oklab, var(--cream) 65%, transparent) 75%, var(--ivory) 100%)",
+            "radial-gradient(ellipse 85% 55% at 50% 35%, color-mix(in oklab, var(--cream) 60%, transparent) 0%, transparent 100%), linear-gradient(180deg, color-mix(in oklab,var(--cream) 55%,transparent) 0%, transparent 28%, color-mix(in oklab,var(--ivory) 70%,transparent) 72%, var(--ivory) 100%)",
         }}
       />
 
-      <LanternField count={10} travel={1.1} />
-      <Petals count={12} />
+      <LanternField count={8} travel={1.1} />
+      <Petals count={10} />
 
       {/* Drifting cloud veils */}
       {!reduced &&
@@ -60,52 +57,24 @@ export function Hero() {
           <motion.div
             key={i}
             aria-hidden
-            className="pointer-events-none absolute h-40 w-[160%] rounded-full blur-3xl"
+            className="pointer-events-none absolute h-36 w-[160%] rounded-full blur-3xl"
             style={{
-              top: `${12 + i * 16}%`,
+              top: `${10 + i * 14}%`,
               left: "-30%",
-              background: `color-mix(in oklab, var(--ivory) ${28 - i * 8}%, transparent)`,
+              background: `color-mix(in oklab, var(--ivory) ${26 - i * 8}%, transparent)`,
             }}
             animate={{ x: ["-8%", "18%", "-8%"] }}
-            transition={{ duration: 52 + i * 22, repeat: Infinity, ease: "easeInOut" }}
+            transition={{ duration: 54 + i * 20, repeat: Infinity, ease: "easeInOut" }}
           />
-        ))}
-
-      {/* Birds */}
-      {!reduced &&
-        [0, 1, 2].map((i) => (
-          <motion.svg
-            key={i}
-            aria-hidden
-            viewBox="0 0 24 8"
-            className="pointer-events-none absolute w-4 text-primary/40 sm:w-5"
-            style={{ top: `${26 + i * 5}%` }}
-            animate={{ x: ["-10vw", "112vw"], y: [0, -14, 6, 0] }}
-            transition={{
-              duration: 34 + i * 9,
-              delay: i * 7,
-              repeat: Infinity,
-              ease: "linear",
-              y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
-            }}
-          >
-            <path
-              d="M1 5C4 1 7 1 10 5M14 5c3-4 6-4 9 0"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.1"
-              strokeLinecap="round"
-            />
-          </motion.svg>
         ))}
 
       {/* Typography */}
       <motion.div
-        className="relative z-10 flex h-full flex-col items-center px-6 pt-[10svh] text-center"
+        className="relative z-10 flex h-full flex-col items-center px-6 pt-[8svh] text-center"
         style={{ y: titleY, opacity: fade }}
       >
         <motion.p
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.1, delay: 0.2 }}
           className="font-sans text-[0.62rem] tracking-[0.5em] text-primary/70 uppercase sm:text-xs"
@@ -116,8 +85,8 @@ export function Hero() {
         <motion.h1
           initial={{ opacity: 0, y: 22, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 1.5, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-5 text-5xl leading-[0.95] text-primary drop-shadow-[0_2px_18px_rgba(255,255,255,0.65)] sm:text-6xl md:text-7xl"
+          transition={{ duration: 1.5, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-4 text-5xl leading-[0.95] text-primary drop-shadow-[0_2px_20px_rgba(255,255,255,0.7)] sm:text-6xl md:text-7xl"
         >
           {invitation.couple.bride}
           <span className="mx-3 font-script text-3xl italic sm:text-4xl">&amp;</span>
@@ -128,7 +97,7 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0, scaleX: 0.4 }}
           animate={{ opacity: 1, scaleX: 1 }}
-          transition={{ duration: 1.2, delay: 0.9 }}
+          transition={{ duration: 1.2, delay: 0.85 }}
           className="mt-5 h-px w-40 origin-center"
           style={{ background: "var(--gradient-gold)" }}
         />
@@ -136,8 +105,8 @@ export function Hero() {
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1.2, delay: 1.05 }}
-          className="mt-4 font-script text-xl text-primary/80 italic sm:text-2xl"
+          transition={{ duration: 1.2, delay: 1.0 }}
+          className="mt-3 font-script text-xl text-primary/80 italic sm:text-2xl"
         >
           {invitation.hero.blessing}
         </motion.p>
@@ -146,35 +115,86 @@ export function Hero() {
           href="#events"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1.3 }}
+          transition={{ duration: 1, delay: 1.25 }}
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.97 }}
-          className="glass-plate shimmer mt-7 rounded-full px-8 py-3 font-sans text-[0.7rem] tracking-[0.32em] uppercase"
+          className="glass-plate shimmer mt-6 rounded-full px-8 py-3 font-sans text-[0.7rem] tracking-[0.32em] uppercase"
         >
           <span className="gold-text shimmer font-semibold">{invitation.hero.eyebrow}</span>
         </motion.a>
 
-        {/* Couple illustration — animated watercolor with real-face style */}
+        {/* ── Real couple photo pinned to the bottom ── */}
         <motion.div
-          className="relative mt-auto w-full max-w-xs sm:max-w-sm"
-          style={{ y: plateY }}
-          initial={{ opacity: 0, y: 40 }}
+          className="relative mt-auto w-full"
+          initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.4, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 1.4, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          <motion.img
-            src={coupleIllustration}
-            alt="Illustrated portrait of Pritha and Ankit in traditional Bengali wedding attire"
-            width={600}
-            height={700}
-            className="w-full object-contain drop-shadow-[0_8px_32px_rgba(0,0,0,0.18)]"
-            animate={reduced ? {} : { y: [0, -6, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          {/* Soft ground shadow so photo blends with the bg */}
+          <div
+            aria-hidden
+            className="absolute bottom-0 left-1/2 h-16 w-3/4 -translate-x-1/2 rounded-full blur-2xl"
+            style={{ background: "color-mix(in oklab, var(--gold-deep) 20%, transparent)" }}
           />
+
+          {/* Decorative arch / frame behind the photo */}
+          <div className="relative mx-auto flex max-w-xs justify-center sm:max-w-sm">
+            {/* Marigold arch decoration */}
+            <svg
+              aria-hidden
+              viewBox="0 0 320 60"
+              className="pointer-events-none absolute -top-8 left-0 w-full opacity-70"
+              fill="none"
+            >
+              <path
+                d="M10 55 Q160 -10 310 55"
+                stroke="oklch(0.63 0.11 78)"
+                strokeWidth="2"
+                strokeDasharray="6 5"
+                strokeLinecap="round"
+              />
+              {[60, 110, 160, 210, 260].map((cx, i) => (
+                <circle
+                  key={cx}
+                  cx={cx}
+                  cy={55 - Math.sin(((cx - 160) / 160) * Math.PI) * 60}
+                  r={i === 2 ? 5 : 3.5}
+                  fill="oklch(0.79 0.14 72)"
+                  opacity="0.85"
+                />
+              ))}
+            </svg>
+
+            {/* The real couple photo */}
+            <motion.div
+              className="relative overflow-hidden rounded-t-[120px] rounded-b-2xl border-4 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.25)]"
+              style={{ borderColor: "color-mix(in oklab, var(--gold) 60%, white)" }}
+              animate={reduced ? {} : { y: [0, -5, 0] }}
+              transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <img
+                src={coupleReal}
+                alt="Pritha and Ankit"
+                width={600}
+                height={750}
+                className="w-full max-w-[260px] object-cover object-top sm:max-w-[300px]"
+                style={{ aspectRatio: "4/5" }}
+              />
+              {/* Bottom fade so photo merges with page */}
+              <div
+                aria-hidden
+                className="absolute bottom-0 left-0 right-0 h-20"
+                style={{
+                  background:
+                    "linear-gradient(0deg, var(--ivory) 0%, transparent 100%)",
+                }}
+              />
+            </motion.div>
+          </div>
         </motion.div>
 
         <motion.div
-          className="mb-6 text-primary/50"
+          className="mb-5 mt-2 text-primary/50"
           animate={reduced ? {} : { y: [0, 8, 0] }}
           transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
         >
