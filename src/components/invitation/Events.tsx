@@ -180,20 +180,6 @@ export function Events() {
             <EventCard key={event.id} event={event} index={i} />
           ))}
         </div>
-
-        {/* Dress code note */}
-        <Reveal delay={0.3}>
-          <div
-            className="mt-12 rounded-[1.6rem] border px-7 py-6 text-center"
-            style={{
-              background: "color-mix(in oklab, var(--gold) 8%, var(--ivory))",
-              borderColor: "color-mix(in oklab, var(--gold) 35%, transparent)",
-            }}
-          >
-            <p className="font-sans text-[0.6rem] tracking-[0.38em] text-gold-deep uppercase mb-2">Dress Code</p>
-            <p className="font-display text-lg text-primary">{invitation.dressCode}</p>
-          </div>
-        </Reveal>
       </div>
     </section>
   );

@@ -90,12 +90,12 @@ export function CoupleStory() {
         <div className="mt-12 grid gap-8 sm:grid-cols-2 sm:gap-10">
           <PortraitCard
             src={bride}
-            alt="Watercolour portrait of the bride in a blush and gold saree"
+            alt="AI animated portrait of Pritha in traditional Bengali bridal Mukut and red Banarasi saree"
             {...story.bride}
           />
           <PortraitCard
             src={groom}
-            alt="Watercolour portrait of the groom in an ivory sherwani"
+            alt="AI animated portrait of Ankit in traditional Bengali groom Topor and ivory Punjabi"
             flip
             {...story.groom}
           />

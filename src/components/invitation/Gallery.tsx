@@ -1,22 +1,32 @@
 import { useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { X } from "lucide-react";
-const dancing = "https://media.invitestory.in/ever-after-bloom/src/assets/scene-dancing.jpg";
-const walking = "https://media.invitestory.in/ever-after-bloom/src/assets/scene-walking.jpg";
-const balcony = "https://media.invitestory.in/ever-after-bloom/src/assets/scene-balcony.jpg";
-const hands = "https://media.invitestory.in/ever-after-bloom/src/assets/scene-hands.jpg";
-const couple = "https://media.invitestory.in/ever-after-bloom/src/assets/couple-lanterns.png";
 import { Ornament, Reveal, SectionTitle } from "./Reveal";
 
 const coupleIllustration = "/couple-bengali.png";
-const coupleReal = "/couple-real.jpg";
+const coupleMandap = "/gallery-bengali-mandap.jpg";
+const coupleBoat = "/gallery-bengali-boat.jpg";
 const bananaLeafBg = "/banana-leaf-bg.png";
 
 const plates = [
-  { src: coupleIllustration, alt: "Pritha & Ankit illustrated wedding portrait", span: "sm:row-span-2", ratio: "aspect-[4/5]" },
-  { src: coupleReal, alt: "Pritha & Ankit smiling together", span: "", ratio: "aspect-square" },
-  { src: dancing, alt: "Dancing under strings of warm lights", span: "", ratio: "aspect-square" },
-  { src: balcony, alt: "The couple at golden hour", span: "sm:col-span-2", ratio: "aspect-[16/10]" },
+  {
+    src: coupleIllustration,
+    alt: "Pritha & Ankit illustrated wedding portrait in traditional Bengali attire",
+    span: "sm:col-span-1",
+    ratio: "aspect-[4/5]",
+  },
+  {
+    src: coupleMandap,
+    alt: "Pritha & Ankit in traditional Bengali wedding mandap",
+    span: "sm:col-span-1",
+    ratio: "aspect-[4/5]",
+  },
+  {
+    src: coupleBoat,
+    alt: "Pritha & Ankit on a decorated boat overlooking Kolkata at sunset",
+    span: "sm:col-span-1",
+    ratio: "aspect-[4/5]",
+  },
 ];
 
 export function Gallery() {
@@ -47,9 +57,9 @@ export function Gallery() {
         <SectionTitle eyebrow="Chapter Four" title="Painted moments" note="A few pages from the album" />
         <Ornament className="mt-8" />
 
-        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-3">
           {plates.map((p, i) => (
-            <Reveal key={p.alt} delay={i * 0.06} className={p.span}>
+            <Reveal key={p.alt} delay={i * 0.08} className={p.span}>
               <motion.button
                 type="button"
                 onClick={() => setOpen(i)}
@@ -83,17 +93,8 @@ export function Gallery() {
           ))}
         </div>
 
-        <Reveal delay={0.1} className="mt-12 flex justify-center">
-          <motion.img
-            src={couple}
-            alt="Illustration of the bride and groom looking up at rising lanterns"
-            loading="lazy"
-            width={556}
-            height={908}
-            className="w-40 sm:w-52"
-            animate={reduced ? {} : { y: [0, -7, 0] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          />
+        <Reveal delay={0.1} className="mt-10 flex justify-center">
+          <Ornament className="w-28 opacity-80" />
         </Reveal>
       </div>
 

@@ -34,7 +34,7 @@ export function Timeline() {
       />
 
       <div className="mx-auto max-w-2xl">
-        <SectionTitle eyebrow="Chapter Three" title="How it happened" note="Four pages, briefly" />
+        <SectionTitle eyebrow="Chapter Three" title="How it happened"/>
 
         <div ref={ref} className="relative mt-14 pl-12 sm:pl-16">
           {/* Animated vine */}

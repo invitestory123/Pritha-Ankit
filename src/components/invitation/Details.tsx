@@ -31,7 +31,6 @@ const cards = [
   { icon: Sparkles, label: "The Day", value: invitation.dateLabel },
   { icon: Clock, label: "The Hour", value: invitation.timeLabel },
   { icon: MapPin, label: "The Place", value: `${invitation.venue.name} · ${invitation.venue.address}` },
-  { icon: Shirt, label: "Dress Code", value: invitation.dressCode },
 ];
 
 export function Details() {
