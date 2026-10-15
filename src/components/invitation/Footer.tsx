@@ -60,7 +60,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative overflow-hidden pt-28 pb-14">
+    <footer className="relative overflow-hidden pt-16 pb-14">
       <img
         src={sunset}
         alt=""
@@ -69,6 +69,10 @@ export function Footer() {
         width={1920}
         height={1024}
         className="absolute inset-0 h-full w-full object-cover opacity-60"
+        style={{
+          maskImage: "linear-gradient(to bottom, transparent 0%, black 18%)",
+          WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 18%)",
+        }}
       />
       <div
         aria-hidden

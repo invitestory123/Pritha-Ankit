@@ -35,6 +35,10 @@ export function LanternField({ count = 9, className = "", travel = 1.15 }: Props
     <div
       aria-hidden
       className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}
+      style={{
+        maskImage: "linear-gradient(to bottom, transparent 0%, black 14%, black 86%, transparent 100%)",
+        WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 14%, black 86%, transparent 100%)",
+      }}
     >
       {lanterns.map((l, i) => (
         <motion.img

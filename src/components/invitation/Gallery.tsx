@@ -34,7 +34,7 @@ export function Gallery() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section className="relative overflow-hidden px-5 py-24">
+    <section className="relative overflow-hidden px-5 pt-24 pb-14">
       <div
         aria-hidden
         className="absolute inset-0 -z-10"
@@ -92,10 +92,6 @@ export function Gallery() {
             </Reveal>
           ))}
         </div>
-
-        <Reveal delay={0.1} className="mt-10 flex justify-center">
-          <Ornament className="w-28 opacity-80" />
-        </Reveal>
       </div>
 
       <AnimatePresence>
